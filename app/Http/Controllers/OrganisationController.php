@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\organisation;
+use App\Models\Organisation;
 use Illuminate\Http\Request;
 
 class OrganisationController extends Controller
@@ -44,9 +44,11 @@ class OrganisationController extends Controller
      * @param  \App\Models\organisation  $organisation
      * @return \Illuminate\Http\Response
      */
-    public function show(organisation $organisation)
+    public function show(Organisation $organisation)
     {
-        //
+        $organisations=Organisation::where('type','organisation')->limit(5)->get();
+        return view('ListOrganisation',['organisations'=>$organisations]);
+
     }
 
     /**

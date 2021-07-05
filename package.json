@@ -2,10 +2,10 @@
     "private": true,
     "name": "back",
     "version": "1.0.0",
-
     "scripts": {
-        "serve":"php artisan serve"
+        "serve": "php artisan serve"
+    },
+    "dependencies": {
+        "bootstrap": "^5.0.2"
     }
-
-
 }

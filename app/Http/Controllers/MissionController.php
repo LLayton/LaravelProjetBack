@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Missions;
+use App\Models\Mission;
 use Illuminate\Http\Request;
-
-class MissionsController extends Controller
+use App\Models\User;
+class MissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,21 +41,23 @@ class MissionsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Missions  $missions
+     * @param  \App\Models\Mission $mission
      * @return \Illuminate\Http\Response
      */
-    public function show(Missions $missions)
+    public function show()
     {
-        //
+
+        $users=User::all();
+        return view('test',['users'=>$users]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Missions  $missions
+     * @param  \App\Models\Mission  $mission
      * @return \Illuminate\Http\Response
      */
-    public function edit(Missions $missions)
+    public function edit(Mission $mission)
     {
         //
     }
@@ -64,10 +66,10 @@ class MissionsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Missions  $missions
+     * @param  \App\Models\Mission  $mission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Missions $missions)
+    public function update(Request $request, Mission $mission)
     {
         //
     }
@@ -75,10 +77,10 @@ class MissionsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Missions  $missions
+     * @param  \App\Models\Mission  $mission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Missions $missions)
+    public function destroy(Mission $mission)
     {
         //
     }
