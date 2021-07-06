@@ -41,8 +41,8 @@ class MissionController extends Controller
             'title'=> $request->title,
             'comment' => $request->comment,
             'deposit' => $request->deposit,
-            'type' => $request->type,
-            'organisation_id' => $request->organisation_id,
+
+            'organisation_id' => $request->identifiant,
         ]);
         return redirect()->route('PageEntreprise');
     }
@@ -60,7 +60,7 @@ class MissionController extends Controller
         $Organisations=Organisation::all();
 
                     
-        return view('ListFacture',['Missions'=>$Missions,'Organisations'=>$Organisations]);
+        return view('ListMission',['Missions'=>$Missions,'Organisations'=>$Organisations]);
     }
 
     /**

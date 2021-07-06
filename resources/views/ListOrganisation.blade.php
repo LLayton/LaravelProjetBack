@@ -31,7 +31,7 @@
                         <hr class="dropdown-divider"></a>
                         <a class="dropdown-item" href="#">Gestion des factures</a>
                           <hr class="dropdown-divider"></a>
-                        <a class="dropdown-item" href="#">Gestion des missions</a>
+                        <a class="dropdown-item" href="{{route('PageMission')}}">Gestion des missions</a>
                       </div>
                     </li>
                   </ul>
@@ -70,6 +70,7 @@
                         <td>Gouvernement</td>
                         @endif   
                         <td><button class="btn btn-success" onclick="passaParam({{$organisation->id}})" data-toggle="modal" data-target="#AddMission">Ajouter une mission</button></td>
+                        <td><button class="btn btn-success" onclick="passaParam({{$organisation->id}})" data-toggle="modal" data-target="#AddMission">Editer une fiche de paye</button></td>
                       </tr>
                       
                   @endforeach
@@ -93,6 +94,8 @@
               </nav>
             </footer>
         </body>
+
+        <!--Petite modal pour l'ajout de mission  -->
         <div class="modal fade" id="AddMission" tabindex="-1" role="dialog"  aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -117,7 +120,11 @@
                     </div>
                     <div class="form-group">
                       <label>Titre</label>
-                      <input name="title"type="text" class="form-control" id="exampleInputEmail1"  placeholder="Entrez le titre" required>
+                      <input name="title"type="text" class="form-control"   placeholder="Entrez le titre" required>
+                    </div>   
+                    <div class="form-group">
+                      <label>Accompte</label>
+                      <input name="deposit"type="text" class="form-control"   placeholder="Entrez l'accompte en euros" required>
                     </div>            
                     <div class="form-group">
                       <label>Commentaire</label>
