@@ -26,3 +26,5 @@ Route::fallback(function () {
 Route::get('/Entreprise', [OrganisationController::class, 'show'])->name('PageEntreprise');
 Route::post('/Entreprise', [OrganisationController::class, 'store']);
 
+Route::get('/Mission', [MissionController::class, 'show'])->name('PageMission');
+Route::post('/Mission', [MissionController::class, 'store']);

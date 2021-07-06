@@ -42,17 +42,30 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Slug</th>
-            <th scope="col">Nom</th>
-            <th scope="col">Mail</th>
-            <th scope="col">Adresse</th>
-            <th scope="col">Type</th>
+            <th scope="col">Référence</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Commentaire</th>
+            <th scope="col">Accompte</th>
+            <th scope="col">Organisation</th>
           </tr>
         </thead>
         <tbody>         
-              <tr>
-  
+                @foreach ($Missions as $Mission)
+                <tr>
+                  <td>{{$Mission->id}}</td>
+                  <td>{{$Mission->reference}}</td>
+                  <td>{{$Mission->title}}</td>
+                  <td>{{$Mission->comment}}</td>
+                  <td>{{$Mission->deposit}}</td>
+                  <td>
+                    @foreach ($Organisations as $organisation)
+                        @if ($Mission->organisation_id===$organisation->id)
+                            {{$organisation->name}}
+                        @endif
+                    @endforeach
+                  </td>
               </tr>
+                @endforeach
         </tbody>
       </table>
   

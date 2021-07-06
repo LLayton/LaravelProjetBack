@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mission;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Organisation;
 class MissionController extends Controller
 {
     /**
@@ -35,7 +36,15 @@ class MissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Mission::create([
+            'reference'=>$request->reference,
+            'title'=> $request->title,
+            'comment' => $request->comment,
+            'deposit' => $request->deposit,
+            'type' => $request->type,
+            'organisation_id' => $request->organisation_id,
+        ]);
+        return redirect()->route('PageEntreprise');
     }
 
     /**
@@ -47,8 +56,11 @@ class MissionController extends Controller
     public function show(Mission $mission)
     {
 
-        $users=User::all();
-        return view('test',['users'=>$users]);
+        $Missions=Mission::all();
+        $Organisations=Organisation::all();
+
+                    
+        return view('ListFacture',['Missions'=>$Missions,'Organisations'=>$Organisations]);
     }
 
     /**
