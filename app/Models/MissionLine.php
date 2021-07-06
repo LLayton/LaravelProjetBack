@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class MissionLine extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'title',
+        'unity',    
+        'quantity',
+        'price',
+        'mission_id',
+    ];
+
 }

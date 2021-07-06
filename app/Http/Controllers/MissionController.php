@@ -44,7 +44,7 @@ class MissionController extends Controller
      * @param  \App\Models\Mission $mission
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Mission $mission)
     {
 
         $users=User::all();

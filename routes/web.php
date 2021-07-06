@@ -18,13 +18,11 @@ Route::get('/', function () {
     return view('index');
 })->name('home');
 
-Route::get('/', function () {
-    return view('index');
-});
+
 Route::fallback(function () {
     return view('index');
 });
 
 Route::get('/Entreprise', [OrganisationController::class, 'show'])->name('PageEntreprise');
+Route::post('/Entreprise', [OrganisationController::class, 'store']);
 
-Route::get('/test', [MissionController::class, 'show'])->name('test');

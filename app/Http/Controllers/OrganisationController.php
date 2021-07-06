@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Organisation;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Uuid;
 
 class OrganisationController extends Controller
 {
@@ -35,7 +36,15 @@ class OrganisationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Organisation::create([
+            'slug'=>Uuid::uuid4(),
+            'tel'=> $request->tel,
+            'name' => $request->name,
+            'address' => $request->address,
+            'type' => $request->type,
+            'email' => $request->email,
+        ]);
+        return redirect()->route('PageEntreprise');
     }
 
     /**
@@ -46,7 +55,7 @@ class OrganisationController extends Controller
      */
     public function show(Organisation $organisation)
     {
-        $organisations=Organisation::where('type','organisation')->limit(5)->get();
+        $organisations=Organisation::all();
         return view('ListOrganisation',['organisations'=>$organisations]);
 
     }

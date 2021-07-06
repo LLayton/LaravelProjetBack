@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Projet laravel</a>
+        <a class="navbar-brand" href="{{route('home')}}">Projet laravel</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,16 +22,14 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Ajout
+                Gestion
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Gestion des organisations</a>
-                <a>
+                
+                <hr class="dropdown-divider"></a>
+                <a class="dropdown-item" href="#">Gestion des factures</a>
                   <hr class="dropdown-divider"></a>
-                <a class="dropdown-item" href="#">Créer une facture</a>
-                <a>
-                  <hr class="dropdown-divider"></a>
-                <a class="dropdown-item" href="#">Gestion Mission</a>
+                <a class="dropdown-item" href="#">Gestion des missions</a>
               </div>
             </li>
           </ul>
@@ -39,7 +37,9 @@
       </div>
     </nav>
     <div class="container">
-
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddUser">
+        Ajouter une organisation
+      </button>
       <table class="table">
         <thead>
           <tr>
@@ -85,3 +85,67 @@
       </nav>
     </footer>
 </body>
+<div class="modal fade" id="AddUser" tabindex="-1" role="dialog" aria-labelledby="AddUser" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ajouter un utilisateur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form method="post"  action="{{route('PageEntreprise')}}">
+            @csrf
+            <div class="form-group">
+              <input name='name' type="text" class="form-control" placeholder="Entrez le noms de l'entreprise" required>
+            </div>
+            <div class="form-group">
+              <label>Adresse mail</label>
+              <input name="email" type="email" class="form-control" id="exampleInputEmail1"  placeholder="Entrez votre mail" required>
+              <small  class="form-text text-muted">Nous ne partagerons jamais votre adresse mail à personne</small>
+            </div>
+            <div class="form-group">
+              <label>Adresse </label>
+              <input name="address"type="text" class="form-control" id="exampleInputEmail1"  placeholder="Entrez votre Adresse" required>
+              <small  class="form-text text-muted">Nous ne partagerons jamais votre adresse à personne</small>
+            </div>            
+            <div class="form-group">
+              <label>Numéro de téléphone </label>
+              <input name="tel"type="text" class="form-control" id="exampleInputEmail1"  placeholder="Entrez votre Numéro de téléphone" required>
+              <small  class="form-text text-muted">Nous ne partagerons jamais votre adresse à personne</small>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Type d'organisation</label>
+              <select  name="type"class="form-control" id="exampleFormControlSelect1" required>
+                <option>school</option>
+                <option>organisation</option>
+                <option>government</option>
+              </select>
+            <button type="submit" class="btn btn-success">Ajouter</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <nav class="navbar navbar-expand-lg bg-dg fixed-bottom">
+    <div class="container justify-content-center">
+      <div class="row">
+        <div class="col">
+          <p>Lyes souifi</p>
+        </div>
+      </div>
+    </div>
+  </nav>
+</footer>
+
+</html>
+
+  
