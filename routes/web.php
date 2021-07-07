@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MissionController;
 use App\Http\Controllers\OrganisationController;
+use App\Http\Controllers\MissionLinesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +29,6 @@ Route::post('/Entreprise', [OrganisationController::class, 'store']);
 
 Route::get('/Mission', [MissionController::class, 'show'])->name('PageMission');
 Route::post('/Mission', [MissionController::class, 'store']);
+
+Route::post('/MissionLine',[MissionLinesController::class,'store'])->name('InsertionLigne');
+Route::get('/MissionLine', [MissionLinesController::class, 'show']);

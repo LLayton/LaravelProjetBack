@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\mission_lines;
+use App\Models\MissionLine;
 use Illuminate\Http\Request;
+use App\Models\Mission;
+use App\Models\Organisation;
 
 class MissionLinesController extends Controller
 {
@@ -35,18 +37,28 @@ class MissionLinesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        MissionLine::create([
+            'title'=> $request->title,
+            'unity'=> $request->unity,    
+            'quantity'=> $request->quantity,
+            'price'=> $request->price,
+            'mission_id'=> $request->mission_id,
+        ]);
+        return redirect()->route('PageMission');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\mission_lines  $mission_lines
+     * @param  \App\Models\MissionLine  $mission_lines
      * @return \Illuminate\Http\Response
      */
-    public function show(mission_lines $mission_lines)
+    public function show(Request $request)
     {
-        //
+        $Organisations=Organisation::all();
+        $Missions=Mission::where('id',$request->id)->get();
+        $MissionsLines=MissionLine::where('mission_id',$request->id)->get();
+        return view('DetailsMission',['Organisations'=>$Organisations,'Missions'=>$Missions,'MissionsLines'=>$MissionsLines]);
     }
 
     /**
@@ -55,7 +67,7 @@ class MissionLinesController extends Controller
      * @param  \App\Models\mission_lines  $mission_lines
      * @return \Illuminate\Http\Response
      */
-    public function edit(mission_lines $mission_lines)
+    public function edit(MissionLine $mission_lines)
     {
         //
     }
@@ -67,7 +79,7 @@ class MissionLinesController extends Controller
      * @param  \App\Models\mission_lines  $mission_lines
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, mission_lines $mission_lines)
+    public function update(Request $request, MissionLine $mission_lines)
     {
         //
     }
@@ -78,7 +90,7 @@ class MissionLinesController extends Controller
      * @param  \App\Models\mission_lines  $mission_lines
      * @return \Illuminate\Http\Response
      */
-    public function destroy(mission_lines $mission_lines)
+    public function destroy(MissionLine $mission_lines)
     {
         //
     }

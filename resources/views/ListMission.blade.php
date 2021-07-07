@@ -64,14 +64,20 @@
                         @endif
                     @endforeach
                   </td>
+                  <td><button class="btn btn-success" onclick="passaParam({{$Mission->id}})" data-toggle="modal" data-target="#AjoutLigne">Ajouter une Ligne</button></td>
+                  <td><button class="btn btn-warning" onclick="window.location.href='{{route('InsertionLigne',['id'=>$Mission->id])}}'" >Voir le détails</button></td>
               </tr>
                 @endforeach
         </tbody>
       </table>
-  
+    <script>
+            function passaParam(id){
+                    document.getElementById('mission_id').value=id;
+                }
+    </script>
     </div>
     <footer>
-      <nav class="navbar navbar-expand-lg bg-dg fixed-bottom">
+      <nav class="navbar navbar-expand-lg bg-dg">
         <div class="container justify-content-center">
           <div class="row">
             <div class="col">
@@ -82,3 +88,47 @@
       </nav>
     </footer>
 </body>
+
+<div class="modal fade" id="AjoutLigne" tabindex="-1" role="dialog" aria-labelledby="AjoutLigne" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >Ajouter une ligne</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post"  action="{{route('InsertionLigne')}}">
+            @csrf
+            <div class="form-group">
+              <label>Titre</label>
+              <input name='title' type="text" class="form-control" placeholder="Entrez le titre" required>
+            </div>
+            <div class="form-group">
+              <label>Unitée</label>
+              <input name="unity" type="text" class="form-control"  required>
+            </div>
+            <div class="form-group">
+              <label>Quantitée </label>
+              <input name="quantity"type="number" class="form-control" min="1" id="exampleInputEmail1"  required>
+            </div>            
+            <div class="form-group">
+              <label>Prix </label>
+              <input name="price"type="number" class="form-control"  min="0"  step="0.01"required>
+            </div>
+            <input type="hidden" name="mission_id" id="mission_id"/>                
+            <button type="submit" class="btn btn-success">Ajouter</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+        </div>
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+</html>
