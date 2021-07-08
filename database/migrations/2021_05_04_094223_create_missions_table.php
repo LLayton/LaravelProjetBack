@@ -22,9 +22,10 @@ class CreateMissionsTable extends Migration
             $table->timestamps();
             $table->timestamp('ended_at');
             $table->unsignedBigInteger('organisation_id');
+            $table->unsignedBigInteger('user_id');
             //
             $table->foreign('organisation_id')->references('id')->on('organisations');
-
+            $table->foreign('user_id')->references('id')->on('users');
         });
 
     }

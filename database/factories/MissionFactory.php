@@ -29,6 +29,7 @@ class MissionFactory extends Factory
             'deposit' => $this->faker->randomDigit(),
             'ended_at'=>now(),
             'organisation_id'=>\App\Models\Organisation::pluck('id')->random(),
+            'user_id'=>\App\Models\User::pluck('id')->random(),
         ];
     }
 }

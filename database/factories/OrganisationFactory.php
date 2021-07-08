@@ -33,21 +33,3 @@ class OrganisationFactory extends Factory
     }
     
 }
-function typeAlea(){
-    $chiffre=rand(0,2);
-    switch ($chiffre) 
-    {
-        case 0:
-            return "school";
-            break;        
-        case 1:
-            return "client";
-            break;        
-        case 2:
-            return "government";
-            break;
-        default:
-            return "ursaf";
-            break;
-    }
-}

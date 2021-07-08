@@ -14,7 +14,8 @@ class Mission extends Model
         'comment' ,
         'deposit' ,
         'ended_at',
-        'organisation_id'
+        'organisation_id',
+        'user_id'
     ];
 
 }

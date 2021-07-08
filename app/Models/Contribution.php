@@ -13,6 +13,7 @@ class Contribution extends Model
         'title',
         'comment' ,
         'organisation_id',
+        'user_id',
     ];
     
 

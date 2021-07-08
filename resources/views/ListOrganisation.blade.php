@@ -70,6 +70,7 @@
                         <td>Gouvernement</td>
                         @endif   
                         <td><button class="btn btn-success" onclick="passaParam({{$organisation->id}})" data-toggle="modal" data-target="#AddMission">Ajouter une mission</button></td>
+                        <td><button class="btn btn-warning" onclick="window.location.href='{{route('InsertionLigne',['idOr'=>$organisation->id])}}'">Détails</button></td>
                       </tr>
                       
                   @endforeach

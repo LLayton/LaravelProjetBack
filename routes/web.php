@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MissionController;
 use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\MissionLinesController;
+use Laravel\Socialite\Facades\Socialite;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,12 +20,12 @@ use App\Http\Controllers\MissionLinesController;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('home');
 })->name('home');
 
 
 Route::fallback(function () {
-    return view('index');
+    return view('home');
 });
 
 Route::get('/Entreprise', [OrganisationController::class, 'show'])->name('PageEntreprise');
@@ -32,3 +36,19 @@ Route::post('/Mission', [MissionController::class, 'store']);
 
 Route::post('/MissionLine',[MissionLinesController::class,'store'])->name('InsertionLigne');
 Route::get('/MissionLine', [MissionLinesController::class, 'show']);
+
+
+Route::get('/login/redirect',function(){
+    return Socialite::driver(driver:'github')->redirect();
+});
+Route::get('/login/callback',function(){
+    $user= Socialite::driver(driver:'github')->user();
+    $UserDb=User::where(['email'=>$user->getEmail()])->firstOrNew(['email'=>$user->getEmail()]);
+
+    $UserDb->fill([
+          "name"=>$user->getName()?? $user->getNickname(),
+        "email"=>$user->getEmail(),
+    ])->save();
+    Auth::login($UserDb);
+    return redirect('/');
+});

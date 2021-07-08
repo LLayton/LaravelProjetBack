@@ -118,11 +118,6 @@
             @endforeach
         </tbody>
       </table>
-    <script>
-            function passaParam(id){
-                    document.getElementById('mission_id').value=id;
-                }
-    </script>
     </div>
     <footer>
       <nav class="navbar navbar-expand-lg bg-dg">
