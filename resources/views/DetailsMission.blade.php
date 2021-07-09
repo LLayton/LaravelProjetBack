@@ -46,7 +46,7 @@
                       <label >ID</label>
                     </div>
                     <div class="row">
-                        {{$Missions[0]->id}}
+                        {{$Mission[0]->id}}
                     </div>
                 </div>
                 <div class="col-4">
@@ -54,7 +54,7 @@
                         <Label>Référence</Label>
                     </div>
                     <div class="row">
-                    {{$Missions[0]->reference}}
+                    {{$Mission[0]->reference}}
                     </div>
                 </div>
                 <div class="col-4">
@@ -62,7 +62,7 @@
                         <Label>Titre</Label>
                     </div>
                     <div class="row">
-                        {{$Missions[0]->title}}
+                        {{$Mission[0]->title}}
                     </div>
                 </div>
                <div class="col-4">
@@ -70,7 +70,7 @@
                     <Label>Commentaire</Label>
                 </div>
                 <div class="row">
-                    {{$Missions[0]->comment}}
+                    {{$Mission[0]->comment}}
                 </div>
                 </div>
                <div class="col-4">
@@ -78,11 +78,11 @@
                     <Label>Accompte</Label>
                 </div>
                 <div class="row">
-                    {{$Missions[0]->deposit}}
+                    {{$Mission[0]->deposit}}
                 </div>
                 </div>               
                 @foreach ($Organisations as $organisation)
-                    @if ( $organisation->id === $Missions[0]->organisation_id)
+                    @if ( $organisation->id === $Mission[0]->organisation_id)
                     <div class="col-4">
                         <div class="row">
                         <Label>Noms de l'organisation</Label>

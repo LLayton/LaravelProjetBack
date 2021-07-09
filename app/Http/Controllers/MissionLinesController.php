@@ -58,10 +58,9 @@ class MissionLinesController extends Controller
     {
         
         $Organisations=Organisation::all();
-        $Missions=Mission::where('id',$request->id)->get();
-        dd($Missions);
-        $MissionsLines=MissionLine::where('mission_id',$request->id)->get();
-        return view('DetailsMission',['Organisations'=>$Organisations,'Missions'=>$Missions,'MissionsLines'=>$MissionsLines]);
+        $Mission=Mission::where('id',$request->id_Mission)->get();
+        $MissionsLines=MissionLine::where('mission_id',$request->id_Mission)->get();
+        return view('DetailsMission',['Organisations'=>$Organisations,'Mission'=>$Mission,'MissionsLines'=>$MissionsLines]);
     }
 
     /**
