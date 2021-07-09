@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Organisation;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Facades\Auth;
 
 class OrganisationController extends Controller
 {
@@ -56,7 +57,9 @@ class OrganisationController extends Controller
     public function show(Organisation $organisation)
     {
         $organisations=Organisation::all();
-        return view('ListOrganisation',['organisations'=>$organisations]);
+        $user=Auth::user();
+
+        return view('ListOrganisation',['organisations'=>$organisations,'user'=>$user]);
 
     }
 

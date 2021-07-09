@@ -51,6 +51,7 @@
         </thead>
         <tbody>         
                 @foreach ($Missions as $Mission)
+                @if ($user->id==$Mission->user_id)
                 <tr>
                   <td>{{$Mission->id}}</td>
                   <td>{{$Mission->reference}}</td>
@@ -65,8 +66,10 @@
                     @endforeach
                   </td>
                   <td><button class="btn btn-success" onclick="passaParam({{$Mission->id}})" data-toggle="modal" data-target="#AjoutLigne">Ajouter une Ligne</button></td>
-                  <td><button class="btn btn-warning" onclick="window.location.href='{{route('InsertionLigne',['id'=>$Mission->id])}}'" >Voir le détails</button></td>
+                  <td><button class="btn btn-warning" onclick="window.location.href='{{route('InsertionLigne',['id_Mission'=>$Mission->id,'id_user'=>$user->id])}}'" >Voir le détails</button></td>
               </tr>
+
+                @endif
                 @endforeach
         </tbody>
       </table>

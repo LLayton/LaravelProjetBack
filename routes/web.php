@@ -7,8 +7,6 @@ use App\Http\Controllers\MissionLinesController;
 use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\UserController;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +24,8 @@ Route::middleware('guest')->group(function () {
     Route::get("/login/callback/google", [SocialiteController::class,'callbackGoogle'])->name('google.callback');
     Route::get("/",  function () {return view('connexion');})->name('connexion');
 
-    Route::get('/login/redirect/github',[Socialite::class,'redirectGithub'])->name('github.redirect');
-    Route::get('/login/callback/github',[Socialite::class,'callbackGithub'])->name("github.callback");
+    Route::get('/login/redirect/github',[SocialiteController::class,'redirectGithub'])->name('github.redirect');
+    Route::get('/login/callback/github',[SocialiteController::class,'callbackGithub'])->name("github.callback");
 });
 
 Route::middleware('auth')->group(function () {
@@ -46,14 +44,7 @@ Route::get('/MissionLine', [MissionLinesController::class, 'show']);
 });
 
 
-
-
-
 // La redirection vers le provider
-
-    
-
-    
 
 Route::fallback(function () {
     return view('home');

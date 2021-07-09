@@ -20,7 +20,7 @@ class CreateMissionsTable extends Migration
             $table->string('comment')->nullable();
             $table->string('deposit')->nullable();
             $table->timestamps();
-            $table->timestamp('ended_at');
+            $table->timestamp('ended_at')->nullable();
             $table->unsignedBigInteger('organisation_id');
             $table->unsignedBigInteger('user_id');
             //

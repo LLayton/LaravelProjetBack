@@ -6,6 +6,7 @@ use App\Models\MissionLine;
 use Illuminate\Http\Request;
 use App\Models\Mission;
 use App\Models\Organisation;
+use Illuminate\Support\Facades\Auth;
 
 class MissionLinesController extends Controller
 {
@@ -55,8 +56,10 @@ class MissionLinesController extends Controller
      */
     public function show(Request $request)
     {
+        
         $Organisations=Organisation::all();
         $Missions=Mission::where('id',$request->id)->get();
+        dd($Missions);
         $MissionsLines=MissionLine::where('mission_id',$request->id)->get();
         return view('DetailsMission',['Organisations'=>$Organisations,'Missions'=>$Missions,'MissionsLines'=>$MissionsLines]);
     }

@@ -110,6 +110,7 @@
                   <form method="post" action="{{route('PageMission')}}"@submit="checkForm">
                     @csrf
                     <input type="hidden"  name="identifiant" id="attributCache"/>
+                    <input type="hidden"  name="id_user" value="{{$user->id}}"/>
                     <div class="form-group">
                       <label>Nom</label>
                       <input name='name' type="text" class="form-control" placeholder="Entrez le nom de la mission"  required>

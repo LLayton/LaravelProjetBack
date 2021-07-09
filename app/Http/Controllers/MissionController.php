@@ -6,6 +6,8 @@ use App\Models\Mission;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Organisation;
+use Illuminate\Support\Facades\Auth;
+
 class MissionController extends Controller
 {
     /**
@@ -41,7 +43,7 @@ class MissionController extends Controller
             'title'=> $request->title,
             'comment' => $request->comment,
             'deposit' => $request->deposit,
-
+            'user_id'=> $request->id_user,
             'organisation_id' => $request->identifiant,
         ]);
         return redirect()->route('PageEntreprise');
@@ -53,14 +55,14 @@ class MissionController extends Controller
      * @param  \App\Models\Mission $mission
      * @return \Illuminate\Http\Response
      */
-    public function show(Mission $mission)
+    public function show()
     {
 
         $Missions=Mission::all();
         $Organisations=Organisation::all();
-
-                    
-        return view('ListMission',['Missions'=>$Missions,'Organisations'=>$Organisations]);
+        $user=Auth::user();
+        $Missions=Mission::all();  
+        return view('ListMission',['Missions'=>$Missions,'Organisations'=>$Organisations,'user'=>$user]);
     }
 
     /**
