@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MissionController;
 use App\Http\Controllers\OrganisationController;
 use App\Http\Controllers\MissionLinesController;
+use App\Http\Controllers\SocialiteController;
+use App\Http\Controllers\UserController;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -19,14 +21,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::middleware('guest')->group(function () {
+    Route::get("/login/redirect/google", [SocialiteController::class,'redirectGoogle'])->name('google.redirect');
+    Route::get("/login/callback/google", [SocialiteController::class,'callbackGoogle'])->name('google.callback');
+    Route::get("/",  function () {return view('connexion');})->name('connexion');
 
-
-Route::fallback(function () {
-    return view('home');
+    Route::get('/login/redirect/github',[Socialite::class,'redirectGithub'])->name('github.redirect');
+    Route::get('/login/callback/github',[Socialite::class,'callbackGithub'])->name("github.callback");
 });
+
+Route::middleware('auth')->group(function () {
+Route::get('/home', [UserController::class,'home'])->name('home');
+Route::get('/logout', [UserController::class,'logout'])->name('logout');
+
 
 Route::get('/Entreprise', [OrganisationController::class, 'show'])->name('PageEntreprise');
 Route::post('/Entreprise', [OrganisationController::class, 'store']);
@@ -36,19 +43,18 @@ Route::post('/Mission', [MissionController::class, 'store']);
 
 Route::post('/MissionLine',[MissionLinesController::class,'store'])->name('InsertionLigne');
 Route::get('/MissionLine', [MissionLinesController::class, 'show']);
-
-
-Route::get('/login/redirect',function(){
-    return Socialite::driver(driver:'github')->redirect();
 });
-Route::get('/login/callback',function(){
-    $user= Socialite::driver(driver:'github')->user();
-    $UserDb=User::where(['email'=>$user->getEmail()])->firstOrNew(['email'=>$user->getEmail()]);
 
-    $UserDb->fill([
-          "name"=>$user->getName()?? $user->getNickname(),
-        "email"=>$user->getEmail(),
-    ])->save();
-    Auth::login($UserDb);
-    return redirect('/');
+
+
+
+
+// La redirection vers le provider
+
+    
+
+    
+
+Route::fallback(function () {
+    return view('home');
 });

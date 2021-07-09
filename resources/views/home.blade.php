@@ -11,7 +11,6 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Projet laravel</a>
@@ -21,7 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" >Home</a>
+              <a class="nav-link active" aria-current="page" >{{$user->name}}</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle active"  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -37,6 +36,10 @@
                 <a class="dropdown-item" href="{{route('PageMission')}}">Gestion des missions</a>
               </div>
             </li>
+            <li style="d-flex">
+              <a href="{{route('logout')}}"><button class="btn btn-danger">Déconnexion</button></a>
+            </li>
+            
           </ul>
 
         </div>
