@@ -18,19 +18,15 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Gestion des Factures</a>
+              <a class="nav-link active" aria-current="page" href="#">Gestion des Mission</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Gestion
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                
-                <hr class="dropdown-divider"></a>
-                <a class="dropdown-item" href="#">Gestion des factures</a>
-                  <hr class="dropdown-divider"></a>
-                <a class="dropdown-item" href="#">Gestion des missions</a>
-              </div>
+                  <a class="dropdown-item" href="{{route('PageEntreprise')}}">Gestion des organisations</a>
+                </div>
             </li>
           </ul>
         </div>

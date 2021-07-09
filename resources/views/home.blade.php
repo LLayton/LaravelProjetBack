@@ -29,10 +29,6 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="{{route('PageEntreprise')}}">Gestion des organisation</a>
                 <a>
-                  <hr class="dropdown-divider"></a>
-                <a class="dropdown-item" href="#">Gestion des factures</a>
-                <a>
-                  <hr class="dropdown-divider"></a>
                 <a class="dropdown-item" href="{{route('PageMission')}}">Gestion des missions</a>
               </div>
             </li>

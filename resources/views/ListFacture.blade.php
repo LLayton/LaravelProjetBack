@@ -25,12 +25,8 @@
                 Gestion
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                
-                <hr class="dropdown-divider"></a>
-                <a class="dropdown-item" href="#">Gestion des factures</a>
-                  <hr class="dropdown-divider"></a>
-                <a class="dropdown-item" href="#">Gestion des missions</a>
-              </div>
+                  <a class="dropdown-item" href="{{route('PageMission')}}">Gestion des missions</a>
+                </div>
             </li>
           </ul>
         </div>

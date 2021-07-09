@@ -25,11 +25,8 @@
               Gestion
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              
-              <hr class="dropdown-divider"></a>
-              <a class="dropdown-item" href="#">Gestion des factures</a>
-                <hr class="dropdown-divider"></a>
-              <a class="dropdown-item" href="{{route('PageMission')}}">Gestion des missions</a>
+            <a class="dropdown-item" href="{{route('PageEntreprise')}}">Gestion des organisations</a>
+             <a class="dropdown-item" href="{{route('PageMission')}}">Gestion des missions</a>
             </div>
           </li>
         </ul>
@@ -120,7 +117,7 @@
       </table>
     </div>
     <footer>
-      <nav class="navbar navbar-expand-lg bg-dg">
+      <nav class="navbar navbar-expand-lg bg-dg fixed-bottom">
         <div class="container justify-content-center">
           <div class="row">
             <div class="col">
@@ -167,7 +164,7 @@
         </form>
 
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer ">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Send message</button>
       </div>
