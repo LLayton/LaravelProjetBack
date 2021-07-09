@@ -45,6 +45,29 @@
         </div>
       </div>
     </nav>
+    <div class="container">
+
+    <div class="row">
+      <div class="col-lg-6 text-white">
+        <div class="card bg-success">
+            <div class="card-body text-center">
+            <p class="card-text">Mission(s) terminée(s)</p>
+            <h3>{{count($MissionFinit)}}</h3>
+            </div>
+        </div>
+    </div>    
+    <div class="col-lg-6 text-white">
+        <div class="card bg-danger">
+            <div class="card-body text-center">
+            <p class="card-text">Mission(s) en cours</p>
+            <h3>{{count($MissionsEnCours)}}</h3>
+            </div>
+        </div>
+  
+    </div>
+  </div>
+
+  </div>
   </body>
   <footer>
     <nav class="navbar navbar-expand-lg bg-dg fixed-bottom">

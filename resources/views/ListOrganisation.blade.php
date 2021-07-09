@@ -70,9 +70,9 @@
                         <td>Gouvernement</td>
                         @endif   
                         <td><button class="btn btn-success" onclick="passaParam({{$organisation->id}})" data-toggle="modal" data-target="#AddMission">Ajouter une mission</button></td>
-                        <td><button class="btn btn-warning" onclick="window.location.href='{{route('InsertionLigne',['idOr'=>$organisation->id])}}'">Détails</button></td>
+                        <!--Je voulais faire une supression d'organisation mais j'ai changé d'avis -->
+                        <!--<td><form method="POST" action="{{route('PageEntreprise',['id'=>$organisation->id])}}"> @csrf  {{ method_field('DELETE') }}<div class="form-group"><input  type="submit"class="btn btn-danger"  name="BoutonSupression"value="Supprimer"/></div></form></td>-->
                       </tr>
-                      
                   @endforeach
                 </tbody>
               </table>
@@ -80,6 +80,7 @@
                   function passaParam(id){
                     document.getElementById('attributCache').value=id;
                   }
+
                 </script>
             </div>
             <footer>

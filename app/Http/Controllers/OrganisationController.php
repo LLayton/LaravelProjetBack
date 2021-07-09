@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Organisation;
+use App\Models\Mission;
+use App\Models\MissionLine;
+
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Auth;
-
 class OrganisationController extends Controller
 {
     /**
@@ -58,7 +60,6 @@ class OrganisationController extends Controller
     {
         $organisations=Organisation::all();
         $user=Auth::user();
-
         return view('ListOrganisation',['organisations'=>$organisations,'user'=>$user]);
 
     }
@@ -92,8 +93,23 @@ class OrganisationController extends Controller
      * @param  \App\Models\organisation  $organisation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(organisation $organisation)
+    public function destroy(Request $request)
     {
-        //
+        //Je voulais faire une suppression par l'utilisateur d'une organisation mais je me demande si  
+        //je lui laisse faire cette actions sachant que d'autre utilisateur en auraient besoins
+
+        /*$id=$request->id;
+        $user=Auth::user();
+        //Avant de supprimer une organisation je doit en premier supprimer les éléments enfants
+        $Missions=Mission::where('organisation_id',$id)->get();
+        foreach($Missions as $mission){
+            MissionLine::where('mission_id',$mission->id)->delete();
+        }
+        Mission::where('organisation_id',$id)->delete();
+        Organisation::where('id',$id)->delete();
+        $organisations=Organisation::all();
+        $user=Auth::user();
+        return view('ListOrganisation',['organisations'=>$organisations,'user'=>$user]);*/
+
     }
 }

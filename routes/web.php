@@ -35,12 +35,13 @@ Route::get('/logout', [UserController::class,'logout'])->name('logout');
 
 Route::get('/Entreprise', [OrganisationController::class, 'show'])->name('PageEntreprise');
 Route::post('/Entreprise', [OrganisationController::class, 'store']);
+//Route::delete('/Entreprise', [OrganisationController::class, 'destroy']);
 
 Route::get('/Mission', [MissionController::class, 'show'])->name('PageMission');
 Route::post('/Mission', [MissionController::class, 'store']);
 
 Route::post('/MissionLine',[MissionLinesController::class,'store'])->name('InsertionLigne');
-Route::get('/MissionLine', [MissionLinesController::class, 'show']);
+
 });
 
 
