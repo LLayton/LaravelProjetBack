@@ -20,16 +20,18 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" >{{$user->name}}</a>
+              <a class="nav-link active" aria-current="page" >@isset ($user->name) {{$user->name}}  @endisset</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle active"  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Ajout
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                @if ($user->name)
                 <a class="dropdown-item" href="{{route('PageEntreprise')}}">Gestion des organisation</a>
                 <a>
                 <a class="dropdown-item" href="{{route('PageMission')}}">Gestion des missions</a>
+                @endif
               </div>
             </li>
             <li style="d-flex">
@@ -48,7 +50,12 @@
         <div class="card bg-success">
             <div class="card-body text-center">
             <p class="card-text">Mission(s) terminée(s)</p>
+            @isset ($MissionFinit)
             <h3>{{count($MissionFinit)}}</h3>
+            @else
+            <h3>Veuillez vous connecter</h3>
+            @endisset
+            
             </div>
         </div>
     </div>    
@@ -56,7 +63,12 @@
         <div class="card bg-danger">
             <div class="card-body text-center">
             <p class="card-text">Mission(s) en cours</p>
+            @isset ($MissionsEnCours)
             <h3>{{count($MissionsEnCours)}}</h3>
+            @else
+            <h3>Veuillez vous connecter</h3>
+
+            @endisset
             </div>
         </div>
   
