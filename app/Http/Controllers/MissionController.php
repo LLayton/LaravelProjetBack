@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mission;
+use App\Models\MissionLine;
 use Illuminate\Http\Request;
 
 use App\Models\Organisation;
@@ -94,8 +95,12 @@ class MissionController extends Controller
      * @param  \App\Models\Mission  $mission
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mission $mission)
+    public function destroy(Request $request)
     {
-        //
+        //On supprime les enfants d'abord
+        $id=$request->id_mission;        
+        MissionLine::where('mission_id',$id)->delete();
+        Mission::where('id',$id)->delete();
+        return redirect()->route('PageMission');    
     }
 }

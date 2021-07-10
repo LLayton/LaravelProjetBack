@@ -63,6 +63,8 @@
                   </td>
                   <td><button class="btn btn-success" onclick="passaParam({{$Mission->id}})" data-toggle="modal" data-target="#AjoutLigne">Ajouter une Ligne</button></td>
                   <td><button class="btn btn-warning" onclick="window.location.href='{{route('InsertionLigne',['id_Mission'=>$Mission->id])}}'" >Voir le détails</button></td>
+                  <td><form method="POST" action="{{route('PageMission')}}"> @csrf  {{ method_field('DELETE') }}<div class="form-group"><input type="hidden" value="{{$Mission->id}}" name="id_mission" /><input  type="submit"class="btn btn-danger"  name="BoutonSupression"value="Supprimer"/></div></form></td>
+
               </tr>
 
                 @endif
