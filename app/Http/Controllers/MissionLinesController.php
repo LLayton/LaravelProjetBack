@@ -91,8 +91,10 @@ class MissionLinesController extends Controller
      * @param  \App\Models\mission_lines  $mission_lines
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MissionLine $mission_lines)
+    public function destroy(Request $request)
     {
-        //
+        $id=$request->id_ligne;        
+        MissionLine::where('id',$id)->delete();
+        return redirect()->route('PageMission');    
     }
 }

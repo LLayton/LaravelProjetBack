@@ -111,6 +111,8 @@
                 <td>{{$lines->quantity}}</td>
                 <td>{{$lines->price}}</td>
                 <td>{{$lines->unity}}</td>
+                <td><form method="POST" action="{{route('InsertionLigne')}}"> @csrf  {{ method_field('DELETE') }}<div class="form-group"><input type="hidden" value="{{$lines->id}}" name="id_ligne" /><input  type="submit"class="btn btn-danger"  name="BoutonSupression"value="Supprimer"/></div></form></td>
+
             </tr>    
             @endforeach
         </tbody>
@@ -165,8 +167,6 @@
 
       </div>
       <div class="modal-footer ">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send message</button>
       </div>
     </div>
   </div>

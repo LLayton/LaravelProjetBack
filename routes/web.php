@@ -43,6 +43,7 @@ Route::delete('/Mission', [MissionController::class, 'destroy']);
 
 Route::get('/MissionLine',[MissionLinesController::class,'show'])->name('InsertionLigne');
 Route::post('/MissionLine',[MissionLinesController::class,'store']);
+Route::delete('/MissionLine',[MissionLinesController::class,'destroy']);
 
 });
 
